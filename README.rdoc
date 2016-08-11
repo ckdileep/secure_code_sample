@@ -20,17 +20,11 @@ This application defines two API endpoints:
 2. GET /api/pages : This endpoint returns each page that has been saved in the DB as JSON in this format:
 
 [{
-
 	"url": "https://s3-us-west-2.amazonaws.com/tmp9779/page1.html",
-	
 	"h1_data": "[\"Page1 H1 tag first\",\"Page1 H1 tag second\"]",
-	
 	"h2_data": "[\"Page1 H2 tag first\",\"Page1 H2 tag second\",\"Page1 H2 tag third\"]",
-	
 	"h3_data": "[\"Page1 H3 tag first\",\"Page1 H3 tag second\"]",
-	
 	"links": "[{\"href\":\"https://www.google.com\",\"link_text\":\"Page1 link 1 google\"},{\"href\":\"https://www.yahoo.com\",\"link_text\":\"Page1 link 2 yahoo\"}]"
-	
 }]
 
 Please note that h1_data, h2_data, h3_data and links are stored in db as JSON strings. This will need to be parsed again like
