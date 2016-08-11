@@ -4,7 +4,7 @@
 Tested with version 2.1.1 on UBUNTU 14.04
 
 * Database creation
-Uses sqlite3 ad default test db defined in database.yml - test.sqlite3
+Uses sqlite3 and default test db defined in database.yml - test.sqlite3
 
 * How to run the test suite
 Just run rake. Uses rspec-rails and database_cleaner(to delete everything in the db before running the tests).
@@ -26,16 +26,19 @@ This application defines two API endpoints:
 	"links": "[{\"href\":\"https://www.google.com\",\"link_text\":\"Page1 link 1 google\"},{\"href\":\"https://www.yahoo.com\",\"link_text\":\"Page1 link 2 yahoo\"}]"
 }]
 
-Please note that h1_data, h2_data, h3_data and links are stored in db as JSON strings. This will need to be parsed again like this before accessing the array elements:
+Please note that h1_data, h2_data, h3_data and links are stored in db as JSON strings. This will need to be parsed again like
+this before accessing the array elements:
       pages = JSON.parse(response.body)
       h1_data = JSON.parse pages[0]["h1_data"]
 Please see the test "GET /api/pages" in spec/requests/index_page_content_rspec.rb.
 
 TODO
 1. The tests reads only a single URL. Have to test with multiple URLs.
-2. Use json_matchers or json_spec gems to match expected JSON with JSON returned by endpoints. See how to represent an array inside a hash (as required for h1_data).
+2. Use json_matchers or json_spec gems to match expected JSON with JSON returned by endpoints. See how to represent an array 
+inside a hash (as required for h1_data).
 3. For performance improvement:
-   - Validate URL passed to index_page_content method in pages_controller in a before_filter method. Return status 400 if validation fails
+   - Validate URL passed to index_page_content method in pages_controller in a before_filter method. Return status 400 if 
+   validation fails
    - move parsing and saving to DB code to a background job.
 4. Clean up unnecessary files (like test folder)
 
