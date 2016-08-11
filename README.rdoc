@@ -1,10 +1,10 @@
 == README
 
 * Ruby version
-Tested with version 2.1.1
+Tested with version 2.1.1 on UBUNTU 14.04
 
 * Database creation
-Uses default test db defined in database.yml - test.sqlite3
+Uses sqlite3 ad default test db defined in database.yml - test.sqlite3
 
 * How to run the test suite
 Just run rake. Uses rspec-rails and database_cleaner(to delete everything in the db before running the tests).
@@ -37,6 +37,7 @@ TODO
 3. For performance improvement:
    - Validate URL passed to index_page_content method in pages_controller in a before_filter method. Return status 400 if validation fails
    - move parsing and saving to DB code to a background job.
+4. Clean up unnecessary files (like test folder)
 
 
 
