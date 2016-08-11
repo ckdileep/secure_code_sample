@@ -17,7 +17,7 @@ Just run rake. Uses rspec-rails and database_cleaner(to delete everything in the
 * Application overview
 This application defines two API endpoints:
 1. POST /api/pages/index_page_content : This endpoint receives the URL of a page (as JSON), parses the content and stores the contents of h1, h2, h3 and link tags in the database. See the test "POST /api/pages/index_page_content" in spec/requests/index_page_content_rspec.rb. The tests use an HTML file stored in AWS S3 (https://s3-us-west-2.amazonaws.com/tmp9779/page1.html) as input.
-2. GET /api/pages :  This endpoint returns each page that has been saved in the DB as JSON in this format:
+2. GET /api/pages : This endpoint returns each page that has been saved in the DB as JSON in this format:
 [{
 	"url": "https://s3-us-west-2.amazonaws.com/tmp9779/page1.html",
 	"h1_data": "[\"Page1 H1 tag first\",\"Page1 H1 tag second\"]",
