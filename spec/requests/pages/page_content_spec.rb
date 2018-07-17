@@ -1,6 +1,7 @@
 require "rails_helper"
+
 describe "Page content API" do
-  describe "POST /api/pages/index_page_content" do
+  describe "POST /api/pages/index_page_content", :type => :request do
     it "indexes page content and saves" do
       # page 1 - https://s3-us-west-2.amazonaws.com/tmp9779/page1.html
       # page 2 - https://s3-us-west-2.amazonaws.com/tmp9779/page2.html
@@ -10,8 +11,7 @@ describe "Page content API" do
         "Accept" => "application/json",
         "Content-Type" => "application/json"
       }
-
-      post "/api/pages/index_page_content", page_params, request_headers
+      post "/api/pages/index_page_content", :params => page_params, :headers => request_headers
       expect(response.status).to eq 201
     end
     it "returns status code 400 when invalid url is provided" do
@@ -22,14 +22,14 @@ describe "Page content API" do
         "Content-Type" => "application/json"
       }
 
-      post "/api/pages/index_page_content", page_params, request_headers
+      post "/api/pages/index_page_content", :params => page_params, :headers => request_headers
       expect(response.status).to eq 400
     end
   end
 
   describe "GET /api/pages" do
     it "returns all saved pages as json" do
-      get "/api/pages", {}, { "Accept" => "application/json" }
+      get "/api/pages", :params => {}, :headers => { "Accept" => "application/json" }
       
       pages = JSON.parse(response.body)
       h1_data = JSON.parse pages[0]["h1_data"]

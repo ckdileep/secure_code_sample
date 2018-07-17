@@ -1,4 +1,4 @@
-class CreatePageContent < ActiveRecord::Migration
+class CreatePageContent < ActiveRecord::Migration[4.2]
   def change
     create_table :page_contents do |t|
       t.string :url

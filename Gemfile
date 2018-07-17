@@ -1,17 +1,18 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.1'
+gem 'railties', '~> 5.2'
+gem 'rails', '~> 5.2'
 gem 'sqlite3'
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0', '>= 5.0.7'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'turbolinks'
 gem 'spring',        group: :development
 gem 'nokogiri', '~> 1.6', '>= 1.6.8'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.1'
+  gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
+    gem 'brakeman'
 end
 
 group :test do
