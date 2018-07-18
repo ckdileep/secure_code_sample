@@ -43,11 +43,11 @@ Relevant files are:
 1. See tests in spec/requests/users/user_spec.rb
 2. app/controllers/users_controller.rb
    Has 5 methods: 
-   <li>update_admin - Original method with vulnerable code. </li>
-   <li>update_admin_incorrect_0 - First incorrect solution. </li>
-   <li>update_admin_incorrect_1 - Second incorrect solution. </li>
-   <li>update_admin_incorrect_2 - Third incorrect solution. </li>
-   <li>update_admin_secure - secure solution that is not vulnerable to SQL injection. </li>
+   *  update_admin - Original method with vulnerable code.
+   *  update_admin_incorrect_0 - First incorrect solution.
+   *  update_admin_incorrect_1 - Second incorrect solution.
+   *  update_admin_incorrect_2 - Third incorrect solution.
+   *  update_admin_secure - secure solution that is not vulnerable to SQL injection.
 
 
 
