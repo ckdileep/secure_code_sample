@@ -29,6 +29,16 @@ describe "Page content API" do
 
   describe "GET /api/pages" do
     it "returns all saved pages as json" do
+      page_params = { "url" => "https://s3-us-west-2.amazonaws.com/tmp9779/page1.html" }.to_json
+
+      request_headers = {
+          "Accept" => "application/json",
+          "Content-Type" => "application/json"
+      }
+      #calling post before get as database is being reset before running each test. need to rethink testing strategy
+      post "/api/pages/index_page_content", :params => page_params, :headers => request_headers
+      expect(response.status).to eq 201
+
       get "/api/pages", :params => {}, :headers => { "Accept" => "application/json" }
       
       pages = JSON.parse(response.body)
