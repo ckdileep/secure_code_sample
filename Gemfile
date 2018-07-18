@@ -9,6 +9,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'turbolinks'
 gem 'spring',        group: :development
 gem 'nokogiri', '~> 1.6', '>= 1.6.8'
+gem 'database_cleaner'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
@@ -16,6 +17,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'database_cleaner'
+  #gem 'database_cleaner'
 end
 

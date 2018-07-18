@@ -4,7 +4,9 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean_with(:truncation)
+    load "#{Rails.root}/db/seeds.rb"
   end
 
   config.before(:each, js: true) do

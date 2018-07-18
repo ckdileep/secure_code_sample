@@ -10,16 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2016_08_10_112128) do
+ActiveRecord::Schema.define(version: 2018_07_17_110952) do
 
   create_table "page_contents", force: :cascade do |t|
-    t.string "url"
+    t.string "url", limit: 255
     t.text "h1_data"
     t.text "h2_data"
     t.text "h3_data"
     t.text "links"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "password"
+    t.integer "age"
+    t.boolean "admin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

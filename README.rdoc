@@ -15,7 +15,8 @@ Just run rake. Uses rspec-rails and database_cleaner(to delete everything in the
 3. Run rake
 
 * Application overview
-This application defines two API endpoints. The first one receives a URL to an HTML page and saves the contents of header and link tags to the database. The second one returns the contents of each saved page in JSON format.
+This application defines two API endpoints. The first one receives a URL to an HTML page and saves the contents of header and link tags to the database.
+The second one returns the contents of each saved page in JSON format.
 See details below:
 1. POST /api/pages/index_page_content : This endpoint receives the URL of a page (as JSON), parses the content and stores the contents of
 h1, h2, h3 and link tags in the database. See the test "POST /api/pages/index_page_content" in spec/requests/pages/page_content_rspec.rb.
