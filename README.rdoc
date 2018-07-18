@@ -12,7 +12,7 @@
 * Deployment instructions
   1. Run bundle install
   2. Run rake db:migrate
-  3. Run rake
+  3. Run rake to run all tests. Run rspec spec/requests/pages/page_content_spec.rb to run tests related to the API end points.
 
 * Application overview
   This application defines two API endpoints. The first one receives a URL to an HTML page and saves the contents of header and link    tags to the database.
