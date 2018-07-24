@@ -16,13 +16,15 @@ skip_before_action :verify_authenticity_token
   end
 
   def update_admin_incorrect_1
-    render json: {update_count: 0}, status:400 and return if params[:name].match(/^[a-zA-Z ']{1,30}$/).nil?
+    invalid_name = params[:name].match(/^[a-zA-Z ']{1,30}$/).nil?
+    render json: {update_count: 0}, status:400 and return if invalid_name
     update_count = User.update_all("admin = 1 WHERE name LIKE \'%#{params[:name]}%\'")
     render json: {update_count: update_count}, status: 200
   end
 
   def update_admin_incorrect_2
-    update_count = User.update_all("admin = 1 WHERE name LIKE \'%#{User.send(:sanitize_sql_like, params[:name])}%\'")
+    sanitized_sql = User.send(:sanitize_sql_like, params[:name])
+    update_count = User.update_all("admin = 1 WHERE name LIKE \'%#{sanitized_sql}%\'")
     render json: {update_count: update_count}, status: 200
   end
 

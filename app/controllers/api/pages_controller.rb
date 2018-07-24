@@ -16,7 +16,8 @@ skip_before_action :verify_authenticity_token
     links = HtmlParser.parse_link(doc)
 
     if PageContent.create!(url: params[:url], h1_data: header_data[:h1_data],
-                       h2_data: header_data[:h3_data], h3_data: header_data[:h3_data], links: links)
+                           h2_data: header_data[:h2_data],
+                           h3_data: header_data[:h3_data], links: links)
       render json: {}, status: 201
     else
      render json: {}, status: 500

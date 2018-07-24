@@ -1,42 +1,31 @@
 require "rails_helper"
 
 describe "Page content API" do
-  describe "POST /api/pages/index_page_content", :type => :request do
-    it "indexes page content and saves" do
-      # page 1 - https://s3-us-west-2.amazonaws.com/tmp9779/page1.html
-      # page 2 - https://s3-us-west-2.amazonaws.com/tmp9779/page2.html
-      page_params = { "url" => "https://s3-us-west-2.amazonaws.com/tmp9779/page1.html" }.to_json
+  # page 1 - https://s3-us-west-2.amazonaws.com/tmp9779/page1.html
+  # page 2 - https://s3-us-west-2.amazonaws.com/tmp9779/page2.html
+  let(:page_params) { { url: "https://s3-us-west-2.amazonaws.com/tmp9779/page1.html" }.to_json }
+  let(:request_headers) { {Accept: "application/json", "Content-Type" => "application/json"} }
 
-      request_headers = {
-        "Accept" => "application/json",
-        "Content-Type" => "application/json"
-      }
-      post "/api/pages/index_page_content", :params => page_params, :headers => request_headers
+  describe "POST /api/pages/index_page_content", type: :request do
+    it "indexes page content and saves" do
+      post "/api/pages/index_page_content", params: page_params, headers: request_headers
       expect(response.status).to eq 201
     end
     it "returns status code 400 when invalid url is provided" do
-      page_params = { "url" => "https://dd" }.to_json
+      page_params = { url: "https://dd" }.to_json
 
-      request_headers = {
-        "Accept" => "application/json",
-        "Content-Type" => "application/json"
-      }
-
-      post "/api/pages/index_page_content", :params => page_params, :headers => request_headers
+      post "/api/pages/index_page_content", params: page_params,
+                                            headers: request_headers
       expect(response.status).to eq 400
     end
   end
 
   describe "GET /api/pages" do
     it "returns all saved pages as json" do
-      page_params = { "url" => "https://s3-us-west-2.amazonaws.com/tmp9779/page1.html" }.to_json
-
-      request_headers = {
-          "Accept" => "application/json",
-          "Content-Type" => "application/json"
-      }
-      #calling post before get as database is being reset before running each test. need to rethink testing strategy
-      post "/api/pages/index_page_content", :params => page_params, :headers => request_headers
+      # calling post before get as database is being reset before running each test.
+      # need to rethink testing strategy
+      post "/api/pages/index_page_content", params: page_params,
+                                            headers: request_headers
       expect(response.status).to eq 201
 
       get "/api/pages", :params => {}, :headers => { "Accept" => "application/json" }
